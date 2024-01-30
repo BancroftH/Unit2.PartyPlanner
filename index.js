@@ -75,7 +75,7 @@ async function addParty(event) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: addPartyForm.name.value,
-        date: addPartyForm.date.value,
+        date: new Date (addPartyForm.date.value),
         time: addPartyForm.time.value,
         location: addPartyForm.location.value,
         discription: addPartyForm.discription.value,
