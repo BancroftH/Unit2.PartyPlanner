@@ -10,11 +10,10 @@ const partyList = document.querySelector("#parties");
 const addPartyForm = document.querySelector("#addParty");
 addPartyForm.addEventListener("submit", addParty);
 
-// * Deletes unwanted party
+// ** Variable for deleteing party
+// const deletePartyForm = document.querySelector("deleteParty");
+// deletePartyForm.addEventListener("submit", deleteParty);
 
-// const deleteParty = document.querySelector("deleteParty");
-// parties.onclick = () => parties.remove();
-//   console.log("Complete");
 console.log("Before async function");
 /**
  * Sync state with the API and rerender
@@ -37,7 +36,11 @@ async function getParties() {
       console.error(error);
   }
 }
+console.log("ran async function getParties");
 
+/**
+ * Render Parties in browser
+ */
 function renderParties() {
   if (!state.parties.length) {
     partyList.innerHTML = "<li>No Parties.</li>";
@@ -87,4 +90,31 @@ async function addParty(event) {
   } catch (error) {
     console.error(error)  
   }
-}   
+}  
+
+// * Deletes unwanted party
+async function deleteParty(event) {
+  event.preventDefault();
+
+  try {
+    const response = await fetch(API_URL, {
+      method: "DELETE",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        name: deletePartyForm.name.value,
+        date: deletePartyForm.date.value,
+        time: deletePartyForm.time.value,
+        location: deletePartyForm.location.value,
+        discription: deletePartyForm.discription.value,
+      }),
+    });
+
+    if(!response.ok) {
+      throw new Error("Failed to delete Party")
+  }
+
+  render();
+} catch (error) {
+  console.error(error)  
+  }
+}
