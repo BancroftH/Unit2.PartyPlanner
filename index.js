@@ -52,7 +52,6 @@ function renderParties() {
     li.innerHTML = `
       <h1>${party.name}</h1>
       <p>${party.date}</p>
-      <p>${party.time}</p>
       <p>${party.location}</p>
       <p>${party.discription}</p>
       `;
@@ -76,7 +75,7 @@ async function addParty(event) {
       body: JSON.stringify({
         name: addPartyForm.name.value,
         date: new Date (addPartyForm.date.value),
-        time: addPartyForm.time.value,
+        // time: addPartyForm.time.value,
         location: addPartyForm.location.value,
         discription: addPartyForm.discription.value,
       }),
@@ -103,7 +102,6 @@ async function deleteParty(event) {
       body: JSON.stringify({
         name: deletePartyForm.name.value,
         date: deletePartyForm.date.value,
-        time: deletePartyForm.time.value,
         location: deletePartyForm.location.value,
         discription: deletePartyForm.discription.value,
       }),
