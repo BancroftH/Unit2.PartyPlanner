@@ -1,5 +1,5 @@
 const COHORT = "2311-FSA-ET-WEB-PT-SF"
-const API_URL = `https://fsa-crud-2aa9294fe819.herokuapp.com/api/${COHORT}/parties`
+const API_URL = `https://fsa-crud-2aa9294fe819.herokuapp.com/api/${COHORT}/events`
 
 const state = {
   parties: [],
@@ -10,11 +10,12 @@ const partyList = document.querySelector("#parties");
 const addPartyForm = document.querySelector("#addParty");
 addPartyForm.addEventListener("submit", addParty);
 
-// Deletes unwanted party
-// const deleteParty = document.querySelector("deleteParty");
-// deleteParty.onclick = () => parties.remove();
-//   console.log("Complete");
+// * Deletes unwanted party
 
+// const deleteParty = document.querySelector("deleteParty");
+// parties.onclick = () => parties.remove();
+//   console.log("Complete");
+console.log("Before async function");
 /**
  * Sync state with the API and rerender
  */
@@ -68,7 +69,7 @@ async function addParty(event) {
   try {
     const response = await fetch(API_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: addPartyForm.name.value,
         date: addPartyForm.date.value,
