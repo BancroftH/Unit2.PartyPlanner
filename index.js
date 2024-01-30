@@ -8,11 +8,11 @@ const state = {
 const partyList = document.querySelector("#parties");
 
 const addPartyForm = document.querySelector("#addParty");
-addPartyForm.addEventListener("submit", addParty);
+addPartyForm.addEventListener('submit', addParty);
 
 // ** Variable for deleteing party
 // const deletePartyForm = document.querySelector("deleteParty");
-// deletePartyForm.addEventListener("submit", deleteParty);
+// deletePartyForm.addEventListener('submit', deleteParty);
 
 console.log("Before async function");
 /**
